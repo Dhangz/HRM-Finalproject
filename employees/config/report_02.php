@@ -27,12 +27,12 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js">
 require('config.php');
 require('db_conn.php');
 
-$query04 = "SELECT goalprogress.status AS status, COUNT(*) AS status_count
+$query04 = "SELECT distinct(goalprogress.status) AS status, COUNT(*) AS status_count
             FROM goalprogress
             JOIN employeegoals ON employeegoals.goal_id = goalprogress.progress_id
-            GROUP BY goalprogress.progress_id
+            GROUP BY goalprogress.status
             ORDER BY status_count DESC, goalprogress.status
-            LIMIT 3;";
+            LIMIT 5;";
 
 $result04 = mysqli_query($conn, $query04);
 

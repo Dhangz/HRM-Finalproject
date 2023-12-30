@@ -59,35 +59,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Edit Employee Goals</h2>
     <form action="" method="post">
 
-    <div class="column">
-        <div class="input-fields">
-            <label for="progress_id">Progress ID:</label>
-            <input type="hidden" name="progress_id" id="progress_id" value="<?php  echo $goalprogressData['progress_id']; ?>" />
-        </div>
+    <form action="" method="post" class="centered-form">
 
-        <div class="input-fields">
+        <div class="column">
+          <div class="input-fields">
             <label for="goal_id">Goal ID:</label>
-            <input type="number" name="goal_id" id="goal_id" value="<?php  echo $goalprogressData['goal_id']; ?>" />
-        </div>
+            <input type="number" name="goal_id" id="goal_id" value="<?php echo $goalprogressData['goal_id'] ?>">
+          </div>
 
-
-        <div class="input-fields">
+          <div class="input-fields">
             <label for="actual_completion_date">Actual Completion Date:</label>
-            <input type="date" name="actual_completion_date" id="actual_completion_date" value="<?php echo $goalprogressData['actual_completion_date']; ?>" />
-        </div>
+            <input type="date" name="actual_completion_date" id="actual_completion_date" value="<?php echo $goalprogressData['actual_completion_date'] ?>">
 
-        <div class="input-fields">
-            <label for="status">Status:</label>
-            <input type="text" name="status" id="status" value="<?php  echo $goalprogressData['status']; ?>" />
-        </div>
+          </div>
 
-        <div class="input-fields">
-            <label for="comments">Comments:</label>
-            <input type="text" name="comments" id="comments" value="<?php  echo $goalprogressData['goal_id']; ?>"/>
-        </div>
-    </div>
+          <div class="input-fields">
+            <label for="status">Status</label>
+            <select name="status" id="status" required>
+              <option value="">--SELECT--</option>
+              <option value="In Progress" <?php echo $goalprogressData['status'] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+              <option value="Completed" <?php echo $goalprogressData['status'] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+              <option value="Overdue" <?php echo $goalprogressData['status'] == 'Overdue' ? 'selected' : ''; ?>>Overdue</option>
+            </select>
+          </div>
 
-        <input type="submit" value="Update">
+          <div class="input-fields">
+            <label for="comments">Comments</label>
+            <input type="text" name="comments" id="comments">
+          </div>
+        </div>
+        <input type="submit" value="Update Goal Progress">
+    </form>
     </form>
     </div>
     <?php include('../templates/footer.html'); ?>

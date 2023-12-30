@@ -404,7 +404,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
         </div>
 
-        <input type="submit" value="Add Employee">
+        <input type="submit" value="Update Employee">
 
       </form>
     </div>
